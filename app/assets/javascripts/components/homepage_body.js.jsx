@@ -6,7 +6,8 @@ class HomepageBody extends React.Component {
     super(props)
 
     this.state = {
-      posts: []
+      posts: [],
+      userid: this.props.userid
     }
   }
 
@@ -15,22 +16,26 @@ class HomepageBody extends React.Component {
     let form = e.target
     let input = form.querySelector('textarea').value
     let allPost = this.state.posts
-    console.log(allPost)
+    // console.log(allPost)
     let newPost = {
       content: input,
       likes: 0,
       comments: [],
-      author: 'kenneth'
+      userid: this.state.userid
     }
     allPost.push(newPost)
     this.setState({
       posts: allPost
     })
-    console.log(allPost)
+    // console.log(allPost)
+
+    savePost(newPost)
+
+
   }
 
   addLike (e) {
-    console.log(e.target.value)
+    // console.log(e.target.value)
     let targetPost = this.state.posts[e.target.value]
     targetPost.likes++
 
@@ -43,7 +48,7 @@ class HomepageBody extends React.Component {
     e.preventDefault()
     let form = e.target
     let input = form.querySelector('input').value
-    console.log(input)
+    // console.log(input)
     let targetPost = this.state.posts[e.target.className]
     let newComment = {
       content: input,

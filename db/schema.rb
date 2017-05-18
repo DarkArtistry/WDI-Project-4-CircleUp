@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170517125948) do
+ActiveRecord::Schema.define(version: 20170518085647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "postlikes", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_postlikes_on_post_id", using: :btree
+    t.index ["user_id"], name: "index_postlikes_on_user_id", using: :btree
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "content"
+    t.integer  "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_posts_on_author_id", using: :btree
+    t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -22,7 +41,7 @@ ActiveRecord::Schema.define(version: 20170517125948) do
     t.datetime "reset_password_sent_at"
     t.string   "firstname"
     t.string   "lastname"
-    t.string   "dob"
+    t.date     "dob"
     t.string   "education"
     t.string   "education_image"
     t.string   "country"
@@ -42,4 +61,7 @@ ActiveRecord::Schema.define(version: 20170517125948) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "postlikes", "posts"
+  add_foreign_key "postlikes", "users"
+  add_foreign_key "posts", "users"
 end
