@@ -16,11 +16,11 @@ class Profilemain extends React.Component {
 
   createPost (e) {
     e.preventDefault()
-    let form = e.target
-    let input = form.querySelector('textarea').value
-    let allPosts = this.state.posts
+    var form = e.target
+    var input = form.querySelector('textarea').value
+    var allPosts = this.state.posts
     // console.log(allPosts)
-    let newPost = {
+    var newPost = {
       content: input,
       likes: 0,
       comments: [],
@@ -42,7 +42,7 @@ class Profilemain extends React.Component {
   }
 
   deletePost (e) {
-    let allPost = this.state.posts
+    var allPost = this.state.posts
     console.log('delete function activated!')
     console.log(e.target.className)
     console.log(e.target.id)
@@ -70,7 +70,7 @@ class Profilemain extends React.Component {
 
   addLike (e) {
     // console.log(e.target.value)
-    let targetPost = this.state.posts[e.target.dataset.postindex]
+    var targetPost = this.state.posts[e.target.dataset.postindex]
     console.log('target post is...', targetPost)
     targetPost.likes++
 
@@ -88,11 +88,11 @@ class Profilemain extends React.Component {
 
   addComment (e) {
     e.preventDefault()
-    let form = e.target
-    let input = form.querySelector('input').value
+    var form = e.target
+    var input = form.querySelector('input').value
     // console.log(input)
-    let targetPost = this.state.posts[e.target.className]
-    let newComment = {
+    var targetPost = this.state.posts[e.target.className]
+    var newComment = {
       contents: input,
       replies: [],
       likes: 0,
@@ -101,7 +101,7 @@ class Profilemain extends React.Component {
     }
     console.log(targetPost)
 
-    let ajaxTarget = {
+    var ajaxTarget = {
       id: this.state.posts[e.target.className].id,
       user_id: this.state.posts[e.target.className].id,
       content: this.state.posts[e.target.className].content,
@@ -134,11 +134,11 @@ class Profilemain extends React.Component {
   }
 
   deleteComment (e) {
-    let targetPost = this.state.posts[e.target.dataset.postindex]
-    let targetComment = targetPost.comments[e.target.dataset.commentindex]
+    var targetPost = this.state.posts[e.target.dataset.postindex]
+    var targetComment = targetPost.comments[e.target.dataset.commentindex]
     console.log(e.target.className)
     console.log(e.target.dataset.postindex)
-    let comment_index = e.target.dataset.commentindex
+    var comment_index = e.target.dataset.commentindex
     targetPost.comments.splice(comment_index, 1)
     console.log(targetPost)
 
@@ -157,9 +157,9 @@ class Profilemain extends React.Component {
 
   render () {
     // console.log('new state is',  this.state.posts)
-    let allPosts = this.state.posts.map((post, index) => {
+    var allPosts = this.state.posts.map((post, index) => {
         // console.log(this.state)
-      let allComments = post.comments
+      var allComments = post.comments
 
       return <div key={index} className={"postBox"}>
 
