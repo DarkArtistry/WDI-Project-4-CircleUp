@@ -38,7 +38,7 @@ gem 'jbuilder', '~> 2.5'
 #custom gems
 gem 'react-rails'
 gem 'devise'
-gem 'react-router-rails'
+# gem 'react-router-rails'
 gem 'rack-cors'
 gem 'redis'
 

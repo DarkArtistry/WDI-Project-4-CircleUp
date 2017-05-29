@@ -141,9 +141,6 @@ GEM
       execjs
       railties (>= 3.2)
       tilt
-    react-router-rails (0.13.3.1)
-      rails (>= 3.1)
-      react-rails (>= 0.12)
     redis (3.3.3)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
@@ -211,7 +208,6 @@ DEPENDENCIES
   rack-cors
   rails (~> 5.0.2)
   react-rails
-  react-router-rails
   redis
   sass-rails (~> 5.0)
   spring
