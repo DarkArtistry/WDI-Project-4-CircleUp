@@ -21,13 +21,8 @@
 // = require cloudinary
 // = require_tree .
 
-// $(function () {
-//   if ($.fn.cloudinary_fileupload !== undefined) {
-//     $('input.cloudinary-fileupload[type=file]').cloudinary_fileupload()
-//   }
-// })
 
 $(document).on('ready turbolinks:load', function () {
-  var $targetContentBox = $(`.MessageMainContent`)
+  var $targetContentBox = $('.MessageMainContent')
   $targetContentBox.scrollTop($targetContentBox[0].scrollHeight)
 })
