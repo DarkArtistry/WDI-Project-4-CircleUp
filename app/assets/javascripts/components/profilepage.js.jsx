@@ -29,7 +29,7 @@ class Profilepage extends React.Component {
   }
 
   render () {
-    var testState = this.state.topstate
+    let testState = this.state.topstate
     return (
       <div>
         <Profiletop relationshipID={this.props.relationshipID} user={this.props.user} toYoutube={() => this.toYoutube()} userid={this.props.userid} toTimeline={() => this.toTimeline()} toAbout={() => this.toAbout()} relationshipData={this.props.relationshipData} />

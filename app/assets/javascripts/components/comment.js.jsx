@@ -13,7 +13,7 @@ class Comment extends React.Component {
     // console.log(e.target.value)
     this.state.likes++
 
-    var ajaxTarget = {
+    let ajaxTarget = {
       comment_id: e.target.dataset.valuelike
     }
 
