@@ -1,0 +1,26 @@
+<div class="MessageMain">
+  <div class="MessageMainHeader">
+    <h1>My Messages</h1>
+  </div>
+    <% @targetMessage.each do |message| %>
+
+      <div class="SingleMessage">
+        <% if message.sender_id != current_user.id %>
+        <a href="/messages/<%= message.sender.id %>">
+          <div>
+            <div><strong><%= message.sender.firstname %> <%= message.sender.lastname %></strong></div>
+            <div><%= message.content %></div>
+          </div>
+        </a>
+        <% else %>
+        <a href="/messages/<%= message.receiver.id %>">
+          <div>
+            <div><strong><%= message.receiver.firstname %> <%= message.receiver.lastname %></strong></div>
+            <div><%= message.content %></div>
+          </div>
+        </a>
+        <% end %>
+
+      </div>
+    <% end  %>
+</div>

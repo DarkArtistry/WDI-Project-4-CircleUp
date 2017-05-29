@@ -1,3 +1,2 @@
 
-
-<%= react_component("HomepageBody", {userid: current_user.id}) %>
+<%= react_component("HomepageBody", {userid: current_user.id, allPost: @allPost, allPostlikes: @allPostlikes, username: current_user.firstname}) %>

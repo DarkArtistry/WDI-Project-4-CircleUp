@@ -20,6 +20,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :occupation
       t.string :company
       t.string :company_image
+      t.string :profilepic
+      t.string :bannerpic
 
       ## Rememberable
       t.datetime :remember_created_at

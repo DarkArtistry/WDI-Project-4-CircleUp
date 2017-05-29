@@ -1,0 +1,25 @@
+<div class="messageMainBox">
+<div class="MessageMainHeader"><h1><%= @user.firstname  %> <%= @user.lastname  %></h1></div>
+<div class="MessageMainContent">
+  <div id="message<%= current_user.id %><%= @targetUserID %>">
+          <% @messages.each do |message| %>
+              <% if message.sender_id == current_user.id %>
+                <div style="display: block; position: relative; float: right; clear:both; background-color: rgb(17, 217, 61); border-radius:0.5em; padding:0.2em; margin:0.5em; box-shadow: 10px 10px 5px #888888; border: grey solid 0.05em;">
+                  <p><%= message.content %></p>
+                </div>
+              <% else %>
+                <div style="display: block; position: relative; float: left; clear:both; background-color: white; border-radius:0.5em; padding:0.2em; margin:0.5em; box-shadow: 10px 10px 5px #888888; border: grey solid 0.05em;">
+                  <p><%= message.content %></p>
+                </div>
+            <%  end  %>
+          <% end  %>
+  </div>
+</div>
+<div class="message-input">
+  <%= form_for(@message, remote: true) do |f| %>
+  <%= f.text_area :content %>
+  <%= f.hidden_field :receiver_id, value: @targetUserID %>
+  <%= f.submit "Send", :class => 'btn btn-primary message-sendButton' %>
+  <% end %>
+</div>
+</div>

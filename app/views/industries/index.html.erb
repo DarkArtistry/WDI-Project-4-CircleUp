@@ -1,0 +1,14 @@
+<div class="industryindex">
+    <% @allIndustries.each do |industry| %>
+
+      <a href="/industries/<%= industry.name %>">
+        <div class="singleindustry">
+          <div >
+            <img style="width: 18em; height: 18em; border-radius: 9em;" src="<%= industry.image %>"/>
+            <p><%= industry.name %></p>
+          </div>
+        </div>
+      </a>
+
+    <% end  %>
+</div>

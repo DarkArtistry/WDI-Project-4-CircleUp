@@ -1,0 +1,13 @@
+development:
+  cloud_name: ddlblmba2
+  api_key: '877424982813664'
+  api_secret: AmfCgrqV1CFBGezUi8_LEkeZkls
+  enhance_image_tag: true
+  static_image_support: false
+
+production:
+  cloud_name: ENV['cloud_name']
+  api_key: ENV['cloud_api_key']
+  api_secret: ENV['cloud_api_secret']
+  enhance_image_tag: true
+  static_image_support: false

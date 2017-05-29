@@ -1,0 +1,83 @@
+// Place all the styles related to the messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.message-input {
+  position: relative;
+  vertical-align: bottom;
+  display: block;
+  clear: both;
+  background-color: rgba(0,0,0,0.1);
+  box-sizing: border-box;
+  height: 13%;
+  padding: 5px;
+  border: 1px black solid;
+}
+
+.message-input form {
+    height: 100%;
+}
+
+.message-input textarea {
+    height: 100%;
+    width: 84.5%
+}
+
+.message-sendButton {
+    float: right;
+    height: 100%;
+    width: 14.5%;
+}
+
+.messageMainBox{
+  height: 500px;
+  max-width: 75%;
+  margin: 10em auto;
+}
+
+.MessageMain {
+  max-width: 75%;
+  margin: 5em auto;
+}
+
+.MessageMainHeader{
+  background-color: #0C67C8;
+  padding: 1em;
+  color: white;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+}
+
+.MessageMainContent {
+  background-color: white;
+  padding: 1em;
+  max-height: 75%;
+  overflow: auto;
+}
+
+.SingleMessage {
+  border: solid 0.5px rgb(105, 106, 103);
+  border-top: none;
+  padding: 0.5em;
+  background-color: white;
+}
+
+.SingleMessage:hover {
+  background-color: rgba(119, 118, 113, 0.1);
+  color: white;
+  text-decoration-color: white;
+}
+
+.ActionSend {
+  display: block;
+  position: relative;
+  float: left;
+  clear:both;
+  background-color: white;
+  border-radius:0.5em;
+  padding:0.2em;
+  margin:0.5em;
+  box-shadow: 10px 10px 5px #888888;
+  border: grey
+  solid 0.05em;
+}

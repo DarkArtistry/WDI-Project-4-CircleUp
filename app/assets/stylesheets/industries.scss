@@ -1,0 +1,24 @@
+// Place all the styles related to the industries controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.industryindex{
+  max-width: 67em;
+  margin: 5em auto;
+  background-color: white;
+  border-radius: 2em;
+}
+
+.industryindex a:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.singleindustry{
+  display: inline-grid;
+  position: relative;
+  max-width: 18em;
+  text-align: center;
+  margin: 2em 2em 2em 2em;
+}

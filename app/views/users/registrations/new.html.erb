@@ -4,8 +4,16 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.hidden_field :profilepic, value: 'http://baxtercoaching.com/wp-content/uploads/2013/12/facebook-default-no-profile-pic-300x300.jpg' %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :bannerpic,  value: 'http://cdn5.fedobe.com/wp-content/uploads/2012/09/Blue-Space-Facebook-Profile-Timeline-Cover.jpg'  %>
+  </div>
+
+  <div class="field">
     <%= f.label :firstname %>
-    <%= f.text_field :firstname %>
+    <%= f.text_field :firstname, autofocus: true %>
   </div>
 
   <div class="field">
@@ -15,7 +23,7 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email %>
   </div>
 
   <div class="field">
@@ -38,7 +46,7 @@
 
   <div class="field">
     <%= f.label :industry %>
-    <%= f.select(:industry, ["IT", "Finance"]) %>
+    <%= f.select(:industry, ["Accountancy", "Advertising, Marketing & Public Relations", "Agriculture & Environment",  "Animal Welfare", "Armed Forces", "Art & Design", "Banking & Finance", "Charity & Non-Profit", "Construction & Property", "Consultancy", "Education & Teaching", "Energy & Utilities", "Engineering", "Entrepreneurship", "Fashion & Beauty", "Fast Moving Consumer Goods", "Gaming", "Geomancy", "Hospitality, Leisure & Tourism", "Information Technology", "Law", "Manufacturing Industry", "Medicine & Healthcare", "Performing Arts", "Police, Security & Emergency", "Public Sector & Government", "Publishing & Media", "Recruitment & HR", "Retail & Merchandising", "Science & Research", "Social Care", "Sports & Fitness", "Transport & Logistics"]) %>
   </div>
 
   <div class="field">

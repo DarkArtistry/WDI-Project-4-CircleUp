@@ -10,10 +10,24 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require react
-//= require react_ujs
-//= require components
-//= require_tree .
+// = require jquery
+// = require jquery_ujs
+// = require turbolinks
+// = require react
+// = require react_ujs
+// = require react_router
+// = require react_router_ujs
+// = require components
+// = require cloudinary
+// = require_tree .
+
+// $(function () {
+//   if ($.fn.cloudinary_fileupload !== undefined) {
+//     $('input.cloudinary-fileupload[type=file]').cloudinary_fileupload()
+//   }
+// })
+
+$(document).on('ready turbolinks:load', function () {
+  var $targetContentBox = $(`.MessageMainContent`)
+  $targetContentBox.scrollTop($targetContentBox[0].scrollHeight)
+})

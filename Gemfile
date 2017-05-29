@@ -36,9 +36,13 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 #custom gems
-gem "react-rails"
+gem 'react-rails'
 gem 'devise'
+gem 'react-router-rails'
+gem 'rack-cors'
+gem 'redis'
 
+gem 'cloudinary'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
