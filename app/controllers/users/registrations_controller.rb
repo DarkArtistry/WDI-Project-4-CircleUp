@@ -36,7 +36,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if params[:user][:bannerpic]
       uploaded_file2 = params[:user][:bannerpic].path
       cloudnary_file2 = Cloudinary::Uploader.upload(uploaded_file2)
-      @User.profilepic = cloudnary_file2['url']
+      @User.bannerpic = cloudnary_file2['url']
     end
     @User.save
   end
