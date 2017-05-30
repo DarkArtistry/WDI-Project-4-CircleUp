@@ -8,6 +8,8 @@ def show
    puts params.inspect
    @Title = params["id"]
 
+   @theIndustry = JSON.parse(Industry.where(name: @Title)[0].to_json)
+
    @allIndustryPost = []
    @allIndustryUser = User.where(industry: @Title)
    @allIndustryUser.each do |user|

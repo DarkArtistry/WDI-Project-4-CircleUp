@@ -210,3 +210,40 @@ nav ul li {
 .profilepicimage:before{
   border: 5px solid black;
 }
+
+.aboutContainer {
+  width: 800px;
+  max-width: 800px;
+  margin: 1em auto;
+  background-color: white;
+  height: 38em;
+  padding-left: 1em;
+  padding-top: 1em;
+}
+
+.aboutfields {
+  margin: 1em;
+}
+
+.aboutname {
+  color: rgb(32, 133, 226)
+}
+
+.industryname {
+  margin: 0 auto;
+  height: 30%;
+  width: 800px;
+  padding: 2em;
+  background-color: white;
+}
+
+.industryname h1 {
+   -webkit-text-stroke: 1px black;
+   color: white;
+   text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}

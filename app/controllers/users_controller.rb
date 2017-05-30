@@ -1,5 +1,36 @@
 class UsersController < ApplicationController
 
+  def index
+       if params[:term]
+         puts params.inspect
+         @users = User.where('lower(firstname) LIKE ?', "%#{params[:term].downcase}%").or User.where('lower(lastname) LIKE ?', "%#{params[:term].downcase}%")
+
+         puts @users
+
+        @users = @users.map do |user|
+
+          #  user.firstname + ' ' + user.lastname
+
+          {
+            :value => "/users/" + user.id.to_s,
+            :label => user.firstname + ' ' + user.lastname
+          }
+
+
+         end
+
+         puts 'bsgibi'
+
+         puts @users
+
+         respond_to do |format|
+            format.html
+            format.json { render :json => @users }
+         end
+       end
+
+  end
+
   def show
     # puts params.inspect
     @Post = JSON.parse(Post.where(user_id: params["id"]).reverse.to_json)

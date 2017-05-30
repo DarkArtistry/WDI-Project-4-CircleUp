@@ -191,7 +191,9 @@ class IndustryMain extends React.Component {
 
     return (
       <div>
-        <h1>{this.props.title}</h1>
+        <div className="industryname" style={{backgroundImage: "url(" + this.props.theIndustry.image+ ")", backgroundSize: "cover", height: "20em", border: "1px black solid"}}>
+          <h1>{this.props.title}</h1>
+        </div>
        <div>
          {allPosts}
        </div>
