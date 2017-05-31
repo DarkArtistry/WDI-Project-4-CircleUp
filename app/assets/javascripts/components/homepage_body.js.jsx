@@ -178,7 +178,7 @@ class HomepageBody extends React.Component {
           { post.authorid !== post.shareuserid && <div className={"whoShared"}><a href={"/users/" + post.shareuserid}>{post.shareuser}</a> shared a post by <a href={"/users/" + post.shareuserid}>{post.authorid}{post.author}</a>: </div>}
         </div>
         <div className={"postShared"}>
-          <Post urlurl={post.urlurl} urldescription={post.urldescription} urlimage={post.urlimage} urltitle={post.urltitle} comments={post.comments} content={post.content} key={post.content + index} className={post.id} likes={post.likes} userid={this.props.userid} postuser={post.user_id} postindex={index} delete={(e) => this.deletePost(e)} />
+          <Post urlurl={post.urlurl} urldescription={post.urldescription} urlimage={post.thumbnail_url} urltitle={post.urltitle} comments={post.comments} content={post.content} key={post.content + index} className={post.id} likes={post.likes} userid={this.props.userid} postuser={post.user_id} postindex={index} delete={(e) => this.deletePost(e)} />
           <div className={"likeRow"}>
           <a data-postindex={index} onClick={(e) => this.addLike(e)}>Like</a>
         </div>
