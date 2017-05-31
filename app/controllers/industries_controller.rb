@@ -32,17 +32,17 @@ def show
        @allPostComment.each do |comment|
          @commentUser = User.where(id: comment["user_id"])[0]
          comment["username"] = @commentUser.firstname
+         @postAuthor = User.where(id: post["author_id"])[0]
+         @postShareUser = User.where(id: post["user_id"])[0]
+         post["comments"] = @allPostComment
+         post["author"] = @postAuthor[:firstname]
+         post["shareuser"] = @postShareUser[:firstname]
+         post["authorid"] = @postAuthor[:id]
+         post["shareuserid"] = @postShareUser[:id]
+         @allPost = @Post
        end
 
      end
-       @postAuthor = User.where(id: post["author_id"])[0]
-       @postShareUser = User.where(id: post["user_id"])[0]
-       post["comments"] = @allPostComment
-       post["author"] = @postAuthor[:firstname]
-       post["shareuser"] = @postShareUser[:firstname]
-       post["authorid"] = @postAuthor[:id]
-       post["shareuserid"] = @postShareUser[:id]
-       @allPost = @Post
 
    end
    @targetUser = JSON.parse(User.where(id: params["id"])[0].to_json)
