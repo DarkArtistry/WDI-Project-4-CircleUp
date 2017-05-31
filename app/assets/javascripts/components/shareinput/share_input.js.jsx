@@ -19,7 +19,7 @@ class ShareInput extends React.Component {
         if (result) {
           console.log('found an URL')
           $.ajax({
-          	url: "http://api.linkpreview.net",
+          	url: "//api.linkpreview.net",
           	dataType: 'jsonp',
           	data: {q: word, key: '592e235fda0e16c0edc37f0857f16a191369763104d33'},
           	success: function (answer) {
