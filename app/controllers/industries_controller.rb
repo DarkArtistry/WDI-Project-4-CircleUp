@@ -17,7 +17,7 @@ def show
    end
    @allIndustryPost.sort
 
-   @Post = JSON.parse(@allIndustryPost.to_json)
+   @Post = JSON.parse(@allIndustryPost.reverse.to_json)
    @allPostlikes = JSON.parse(Postlike.all.to_json)
    @Post.each do |post|
      @allPostComment = JSON.parse(Comment.where(post_id: post["id"]).to_json)
@@ -37,7 +37,7 @@ def show
      post["shareuserid"] = @postShareUser[:id]
    end
    @allPost = @Post
-  
+
 
    end
 

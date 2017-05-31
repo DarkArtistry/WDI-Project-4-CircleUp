@@ -20,7 +20,14 @@ class IndustryMain extends React.Component {
       content: input,
       likes: 0,
       comments: [],
-      user_id: this.state.userid
+      user_id: this.state.userid,
+      authorid: this.state.userid,
+      shareuserid: this.state.userid,
+      author: this.props.username,
+      urlurl: urlURL,
+      urlimage: urlImage,
+      urltitle: urlTitle,
+      urldescription: urlDescription
     }
     // console.log(allPost)
     $.ajax({
@@ -163,7 +170,7 @@ class IndustryMain extends React.Component {
           { post.authorid !== post.shareuserid && <div className={"whoShared"}>{post.shareuser} shared a post by {post.author}: </div>}
         </div>
         <div className={"postShared"}>
-          <Post urlurl={post.urlurl} urldescription={post.urldescription} urlimage={post.thumbnail_url} urltitle={post.urltitle} comments={post.comments} content={post.content} key={post.content + index} className={post.id} likes={post.likes} userid={this.props.userid} postuser={post.user_id} postindex={index} delete={(e) => this.deletePost(e)} />
+          <Post urlurl={post.urlurl} urldescription={post.urldescription} urlimage={post.urlimage} urltitle={post.urltitle} comments={post.comments} content={post.content} key={post.content + index} className={post.id} likes={post.likes} userid={this.props.userid} postuser={post.user_id} postindex={index} delete={(e) => this.deletePost(e)} />
           <div className={"likeRow"}>
           <a data-postindex={index} href={"#"} onClick={(e) => this.addLike(e)}>Like</a>
         </div>
