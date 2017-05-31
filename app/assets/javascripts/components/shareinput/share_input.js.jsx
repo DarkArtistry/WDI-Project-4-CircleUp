@@ -18,18 +18,17 @@ class ShareInput extends React.Component {
 
         if (result) {
           console.log('found an URL')
+          var word2 = encodeURIComponent(word)
           $.ajax({
-          	url: "http://api.linkpreview.net",
-          	dataType: 'jsonp',
-          	data: {q: word, key: '592e235fda0e16c0edc37f0857f16a191369763104d33'},
+          	url: "https://api.proc.link/oembed?url=" + word2,
           	success: function (answer) {
           		console.log(answer)
 
-              $('#previewdiv').append(`<a href="${answer.url}"><img src="${answer.image}" style="width: 25%; display: inline-block;" /></a>`)
+              $('#previewdiv').append(`<a href="${answer.url}"><img src="${answer.thumbnail_url}" style="width: 25%; display: inline-block;" /></a>`)
               $('#previewdiv').append(`<a href="${answer.url}"><div style="display: inline-block;"><h2>${answer.title}</h2></div></a>`)
               $('#previewdiv').append(`<a href="${answer.url}"><div style="display: inline-block;">${answer.description}</div></a>`)
               $('#urlurl').val(answer.url)
-              $('#urlimage').val(answer.image)
+              $('#urlimage').val(answer.thumbnail_url)
               $('#urltitle').val(answer.title)
               $('#urldescription').val(answer.description)
           	}
