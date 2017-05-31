@@ -35,13 +35,13 @@ class HomepageBody extends React.Component {
       urltitle: urlTitle,
       urldescription: urlDescription
     }
-    // console.log(allPost)
+    console.log(allPosts)
     $.ajax({
       url: '/posts',
       type: 'POST',
       data: { post: newPost },
       success: (post) => {
-        // console.log('post', newPost)
+        console.log('post', newPost)
         allPosts.unshift(newPost)
         this.setState({
           posts: allPosts

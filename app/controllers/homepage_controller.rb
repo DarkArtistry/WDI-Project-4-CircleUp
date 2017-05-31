@@ -34,7 +34,7 @@ class HomepageController < ApplicationController
       post["authorid"] = @postAuthor[:id]
       post["shareuserid"] = @postShareUser[:id]
     end
-    # puts 'here'
+    puts 'hereasdasdasdasdadasda'
     puts @Post
     @allPost = @Post
     @allPostNoneJSON = Post.all
