@@ -24,7 +24,7 @@ class Profilemain extends React.Component {
     let urlImage = form.querySelectorAll('input')[1].value
     let urlTitle = form.querySelectorAll('input')[2].value
     let urlDescription = form.querySelectorAll('input')[3].value
-    
+
     let newPost = {
       content: input,
       likes: 0,
@@ -180,7 +180,7 @@ class Profilemain extends React.Component {
           { post.authorid !== post.shareuserid && <div className={"whoShared"}>{post.shareuser} shared a post by {post.author}: </div>}
         </div>
         <div className={"postShared"}>
-        <Post urlurl={post.urlurl} urldescription={post.urldescription} urlimage={post.thumbnail_url} urltitle={post.urltitle} comments={post.comments} content={post.content} key={post.content + index} className={post.id} postuser={post.user_id} userid={this.props.userid} likes={post.likes} postindex={index} delete={(e) => this.deletePost(e)} />
+        <Post urlurl={post.urlurl} urldescription={post.urldescription} urlimage={post.urlimage} urltitle={post.urltitle} comments={post.comments} content={post.content} key={post.content + index} className={post.id} postuser={post.user_id} userid={this.props.userid} likes={post.likes} postindex={index} delete={(e) => this.deletePost(e)} />
         <div className={"likeRow"}>
         <a data-postindex={index} onClick={(e) => this.addLike(e)}>Like</a></div>
         </div>
