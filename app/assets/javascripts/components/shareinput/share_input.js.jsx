@@ -21,7 +21,7 @@ class ShareInput extends React.Component {
           $.ajax({
           	url: "http://api.linkpreview.net",
           	dataType: 'jsonp',
-          	data: {q: word, key: '592521f2789032354a6fbf90508694f5e58fd7e4fdc72'},
+          	data: {q: word, key: '592e235fda0e16c0edc37f0857f16a191369763104d33'},
           	success: function (answer) {
           		console.log(answer)
 
