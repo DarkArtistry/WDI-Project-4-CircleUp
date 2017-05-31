@@ -60,7 +60,6 @@ class Profiletop extends React.Component {
           <li><a onClick={this.props.toTimeline}>TimeLine</a></li>
           <li><a onClick={this.props.toAbout}>About</a></li>
           {this.props.user.id !== this.props.userid && <li><a href={"/messages/" + this.props.user.id}>Message</a></li>}
-          <li><a onClick={this.props.toYoutube}>Youtube Videos</a></li>
           <li>
             {this.props.user.id !== this.props.userid && this.state.following === false &&
               <span><a onClick={() => this.follow()}>Follow</a></span> }
