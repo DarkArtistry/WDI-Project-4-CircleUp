@@ -19,7 +19,8 @@ class Post extends React.Component {
               {this.props.userid === this.props.postuser && <span><a className={this.props.className} onClick={this.props.delete} id={this.props.postindex}>Delete Post</a></span>}
             </div>
         </div>
-        {this.props.urlurl && <a href={this.props.urlurl}><div><img className="PostImage" src={this.props.urlimage} /><div ><h2>{this.props.urltitle}</h2></div><div>{this.props.urldescription}</div></div></a>}
+        {console.log('image is ', this.props.urlimage)}
+        {this.props.urlurl && <a href={this.props.urlurl}><div><img className="PostImage" src={"" + this.props.urlimage} /><div ><h2>{this.props.urltitle}</h2></div><div>{this.props.urldescription}</div></div></a>}
       </div>
     )
   }

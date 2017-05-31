@@ -21,5 +21,8 @@
 
 $(document).on('ready turbolinks:load', function () {
   var $targetContentBox = $('.MessageMainContent')
-  $targetContentBox.scrollTop($targetContentBox[0].scrollHeight)
+  if ($targetContentBox) {
+
+    $targetContentBox.scrollTop($targetContentBox[0].scrollHeight)
+  }
 })

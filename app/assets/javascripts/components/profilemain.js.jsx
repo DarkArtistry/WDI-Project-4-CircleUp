@@ -171,6 +171,7 @@ class Profilemain extends React.Component {
     // console.log('new state is',  this.state.posts)
     let allPosts = this.state.posts.map((post, index) => {
         // console.log(this.state)
+        console.log(post.urlimage)
       let allComments = post.comments
 
       return <div key={index} className={"postBox"}>
