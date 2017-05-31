@@ -18,8 +18,3 @@
 // = require components
 // = require cloudinary
 // = require_tree .
-
-$(document).on('ready turbolinks:load', function () {
-  var $targetContentBox = $('.MessageMainContent')
-  $targetContentBox.scrollTop($targetContentBox[0].scrollHeight)
-})
