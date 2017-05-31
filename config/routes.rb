@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+    mount ActionCable.server, at: '/cable'
+
   get 'messages/index'
 
   get 'messages/create'
@@ -20,5 +22,5 @@ Rails.application.routes.draw do
   resources :relationships
   resources :industries
   resources :messages
-  mount Actioncable.server => '/cable'
+
 end
