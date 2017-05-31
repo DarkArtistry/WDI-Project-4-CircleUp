@@ -4,6 +4,7 @@ module ApplicationCable
 
    def connect
     #  puts 'check connection'
+     puts "connected"
      self.current_user = find_verified_user
     #  puts 'current_user' + self.current_user. + ' ' + env['warden'].user
    end
