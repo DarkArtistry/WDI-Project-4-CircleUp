@@ -12,24 +12,26 @@ def show
 
    @allIndustryPost = []
    @allIndustryUser = User.where(industry: @Title)
+
    @allIndustryUser.each do |user|
      @allIndustryPost += user.posts
    end
+
    @allIndustryPost.sort
 
-   if @allIndustryPost
+   if @allIndustryPost.length > 0
 
      @Post = JSON.parse(@allIndustryPost.to_json)
      @allPostlikes = JSON.parse(Postlike.all.to_json)
+
      @Post.each do |post|
        @allPostComment = JSON.parse(Comment.where(post_id: post["id"]).to_json)
        @allPostComment.each do |comment|
          @commentUser = User.where(id: comment["user_id"])[0]
          comment["username"] = @commentUser.firstname
-         # puts comment.inspect
-         # puts 'please'
        end
 
+     end
        @postAuthor = User.where(id: post["author_id"])[0]
        @postShareUser = User.where(id: post["user_id"])[0]
        post["comments"] = @allPostComment
@@ -38,7 +40,6 @@ def show
        post["authorid"] = @postAuthor[:id]
        post["shareuserid"] = @postShareUser[:id]
        @allPost = @Post
-   end
 
    end
    @targetUser = JSON.parse(User.where(id: params["id"])[0].to_json)
