@@ -7,7 +7,7 @@ class PostsController < ApplicationController
       puts @new_post.inspect
       @new_post.author_id = current_user.id
 
-      @new_post.save
+      @new_post.save!
   end
 
   def destroy
