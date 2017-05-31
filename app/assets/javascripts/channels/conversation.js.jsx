@@ -1,4 +1,5 @@
 App.conversation = App.cable.subscriptions.create('ConversationChannel', {
+  
   connected: function () {
     console.log(`connected`)
   },

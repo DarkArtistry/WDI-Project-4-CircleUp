@@ -3,7 +3,7 @@ module ApplicationCable
     identified_by :current_user
 
    def connect
-     puts 'check connection'
+    #  puts 'check connection'
      self.current_user = find_verified_user
     #  puts 'current_user' + self.current_user. + ' ' + env['warden'].user
    end
