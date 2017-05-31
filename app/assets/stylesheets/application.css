@@ -219,6 +219,7 @@ nav ul li {
   height: 38em;
   padding-left: 1em;
   padding-top: 1em;
+  border: 1px solid black;
 }
 
 .aboutfields {
