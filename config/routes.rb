@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-    mount ActionCable.server, at: '/cable'
+
+  mount ActionCable.server => '/cable'
 
   get 'messages/index'
 

@@ -23,8 +23,8 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
-  config.serve_static_assets = true
+  config.assets.compile = false
+  # config.serve_static_assets = true
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
@@ -37,8 +37,8 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
   # config.web_socket_server_url = "wss://hidden-ridge-25647.herokuapp.com/cable"
-  config.action_cable.url = 'https://shielded-thicket-10055.herokuapp.com/'
-  config.action_cable.allowed_request_origins = [ 'https://shielded-thicket-10055.herokuapp.com/', /https:\/\/shielded-thicket-10055.herokuapp.com.*/ ]
+  config.action_cable.url = 'wss://shielded-thicket-10055.herokuapp.com/cable'
+  config.action_cable.allowed_request_origins = [ 'https://shielded-thicket-10055.herokuapp.com/', 'http://shielded-thicket-10055.herokuapp.com/' ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
