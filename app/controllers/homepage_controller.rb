@@ -15,7 +15,7 @@ class HomepageController < ApplicationController
 
     end
 
-    @Post = JSON.parse(@targetPostObjects.to_json)
+    @Post = JSON.parse(@targetPostObjects.reverse.to_json)
     @allPostlikes = JSON.parse(Postlike.all.to_json)
     @Post.each do |post|
       @allPostComment = JSON.parse(Comment.where(post_id: post["id"]).to_json)
