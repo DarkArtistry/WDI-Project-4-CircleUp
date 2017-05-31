@@ -13,8 +13,11 @@ def show
    @allIndustryPost = []
    @allIndustryUser = User.where(industry: @Title)
 
-   @allIndustryUser.each do |user|
-     @allIndustryPost += user.posts
+   if @allIndustryUser.length > 0
+
+     @allIndustryUser.each do |user|
+       @allIndustryPost += user.posts
+     end
    end
 
    @allIndustryPost.sort
