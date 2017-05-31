@@ -17,16 +17,19 @@ def show
    end
    @allIndustryPost.sort
 
-   @Post = JSON.parse(@allIndustryPost.to_json)
-   @allPostlikes = JSON.parse(Postlike.all.to_json)
-   @Post.each do |post|
-     @allPostComment = JSON.parse(Comment.where(post_id: post["id"]).to_json)
-     @allPostComment.each do |comment|
-       @commentUser = User.where(id: comment["user_id"])[0]
-       comment["username"] = @commentUser.firstname
-       # puts comment.inspect
-       # puts 'please'
-     end
+   if @allIndustryPost
+
+     @Post = JSON.parse(@allIndustryPost.to_json)
+     @allPostlikes = JSON.parse(Postlike.all.to_json)
+     @Post.each do |post|
+       @allPostComment = JSON.parse(Comment.where(post_id: post["id"]).to_json)
+       @allPostComment.each do |comment|
+         @commentUser = User.where(id: comment["user_id"])[0]
+         comment["username"] = @commentUser.firstname
+         # puts comment.inspect
+         # puts 'please'
+       end
+   end
 
      @postAuthor = User.where(id: post["author_id"])[0]
      @postShareUser = User.where(id: post["user_id"])[0]
