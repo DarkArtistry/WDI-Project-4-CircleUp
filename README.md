@@ -27,172 +27,220 @@
 ***
 ### Workings
 
-Step 1
+Step 1 FlowChart
 ![FlowChart](/app/assets/images/componentBreakDown.jpg)
 
-Step 2
+Step 2 ERD
 ![ERD](https://github.com/DarkArtistry/WDI-Project-4-CircleUp/blob/master/CircleUpERD.png?raw=true)
 
-Step 3
-![MVP](https://github.com/DarkArtistry/project2/blob/master/Untitled%20Diagram.png?raw=true)
+Step 3 MVP
+![MVP](https://github.com/DarkArtistry/WDI-Project-4-CircleUp/blob/master/MVP.png?raw=true)
 
-Step 3
+Step 4 Database
+![Database](/app/assets/images/Database.png)
 
-Start Project, first with connecting to the database and install express then login page!
+Start Project, first with connecting to the database and install react-rails then login page!
 
 ***
 ### Hiccups & Techniques
 
-#### 1. Authentication with passport
+#### 1. Understanding the many ways of using react with rails
 
-#### 2. Deep population
+```
+<%= react_component("HelloWorld", { greeting: "Hello" }) %>
+```
+
+#### 2. React-Component (Esp w/o react-router)
 
 ```  
-User.findById(req.params.id).populate({
-    path: 'articles',
-    populate: {
-      path: 'user',
-      model: 'User'
-    },
-    populate: {
-      path: 'coments',
-      model: 'Coment',
-      populate: {
-        path: 'user',
-        model: 'User'
-      }
-    }
-  })
+constructor (props) {
+  super(props)
+  this.state = {
+    btmstate: <Profilemain userid={this.props.userid} allPost={this.props.allPost} allPostlikes={this.props.allPostlikes} user={this.props.user.id} />
+  }
   ```
 
-This made it even clearer
-[Deep Population Techniques](http://frontendcollisionblog.com/mongodb/2016/01/24/mongoose-populate.html)
-
-#### 3. Text Area
+#### 3. Text Area (Line Breaks)
 
 ```
-<div>
-  <p class="articlefields">
-    <%- news.content.replace(/\r\n/g, "<br>") %>
-    <br>
-    Journalist:
-    <a class="profilelink" href="/profile/<%- news.user.id %>">
-      <%- news.user.firstname %>
-    </a>
-  </p>
-</div>
-```
-
-#### 4. Ajax
-
-So you have to declare a script, I declared it in my layouts to call a public folder to run my script.js, where one of the on click event triggers my Ajax
+<div className={"onlyPostShared"}>
+  <div className={"postSharedContent"}>
+      {this.state.content.split('\n').map((item, index) => { return <span key={index}>{item}<br /></span> })}...
 
 ```
-var $bookmarkbtn = $('.bookmarkbtn')
 
-$bookmarkbtn.on('click', function () {
-  var thebutton = $(this)
-  var $bookmarkid = $(this).val()
-  $.ajax({
-    type: 'PUT',
-    // url: 'https://still-mesa-80925.herokuapp.com/bookmark.json',
-    url: 'http://localhost:5000/bookmark.json',
-    data: {
-      articleid: $bookmarkid
-    }
-  }).done(function (data) {
-    console.log('I am from ajax', data)
+#### 4. AjaxS
 
-    if (thebutton.val() === data) {
-      thebutton.removeClass('bm')
-    } else {
-      thebutton.addClass('bm')
-    }
+There were many Ajax that I used during thing project
 
-  })
-})
 ```
-```
-function bookmarkJson (req, res) {
-  var userArticles = req.user.articles.toString().split(',')
-  var currentArticle = req.body.articleid.toString()
-  var currentUser = req.user
-  if (userArticles.includes(currentArticle)) {
-    var index = req.user.articles.indexOf(req.body.articleid)
-    currentUser.articles.splice(index, 1)
-    currentUser.save(function (err, data) {
-      res.json(currentArticle)
-    })
-  } else {
-    currentUser.articles.unshift(currentArticle)
-    currentUser.save(function (err, data) {
-      res.json(data)
-    })
+createPost (e) {
+  e.preventDefault()
+  let form = e.target
+  let input = form.querySelector('textarea').value
+  let allPosts = this.state.posts
+  // console.log(allPosts)
+  let urlURL = form.querySelectorAll('input')[0].value
+  let urlImage = form.querySelectorAll('input')[1].value
+  let urlTitle = form.querySelectorAll('input')[2].value
+  let urlDescription = form.querySelectorAll('input')[3].value
+
+  let newPost = {
+    content: input,
+    likes: 0,
+    comments: [],
+    user_id: this.state.userid,
+    authorid: this.state.userid,
+    shareuserid: this.state.userid,
+    author: this.props.username,
+    urlurl: urlURL,
+    urlimage: urlImage,
+    urltitle: urlTitle,
+    urldescription: urlDescription
   }
+  // console.log(allPost)
+  $.ajax({
+    url: '/posts',
+    type: 'POST',
+    data: { post: newPost },
+    success: (post) => {
+      // console.log('post', newPost)
+      allPosts.unshift(newPost)
+      this.setState({
+        posts: allPosts
+      })
+    }
+  })
 }
 ```
-Which leads to the saving error I had
+Below are for the link previews:
 
-#### 5. Saving - By Passing Pre-save w/ my User model
-
+Initially i used Linkpreview.net But theie request is made in http which creates CORS issues because my server request in https but receives a http response instead, it works on my local host but not on deployment. and I didn't had the NPM package that louisa used in her express project 2
 ```
-userSchema.pre('save', function (next) {
-  var user = this
-  if(!user.isModified('password')) return next()
-  var hash = bcrypt.hashSync(user.password, 10)
-  user.password = hash
-  next()
-})
-```
+var target = 'https://www.google.com';
 
-Later I learn that i could do something like this:
-```
-.delete((req, res) => {
-  Business.findByIdAndUpdate(req.user.business, {$pull: {menu: req.body.id}}, (err, data) => {
-    if (err) {
-      req.flash('error', 'There was an error finding your business. Please try again.')
-      return res.redirect('back')
-    }
-    req.flash('success', 'Your menu item was successfully removed.')
-    res.redirect('/business/dashboard')
-  })
-})
-```
-
-#### 6. Finally The Newspaper Feel !
-
-I was introduced to [Mansory](http://masonry.desandro.com/#install)
-
-With this i was able to make use of his function to guide my css to have a 'jaggered' feel.
-
-In  my ejs I will need :
-* grid Div
-* grid-size div
-* grid-item div
-
-Run this script in my layouts
-```
-<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-```
-```
-var $grid = $('.grid').masonry({
-  itemSelector: '.grid-item',
-  percentPosition: true,
-  columnWidth: '.grid-sizer'
+$.ajax({
+	url: "http://api.linkpreview.net",
+	dataType: 'jsonp',
+	data: {q: target, key: 123456},
+	success: function (answer) {
+		console.log(answer);
+	}
 });
-// layout Isotope after each image loads
-$grid.imagesLoaded().progress( function() {
-  $grid.masonry();
-});
-})
+```
+thus instead i used proclink
+```
+renderUrl (e) {
+  var string = ''
+
+    string = $('#shareBox').val()
+    var new_arr = string.split(' ')
+
+    new_arr.forEach(function (word) {
+      var exp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+      var result = exp.test(word)
+      var request = new Request('https://github.com/github');
+
+      if (result) {
+        console.log('found an URL')
+        var word2 = encodeURIComponent(word)
+        $.ajax({
+          url: "https://api.proc.link/oembed?url=" + word2,
+          success: function (answer) {
+            console.log(answer)
+
+            $('#previewdiv').append(`<a href="${answer.url}"><img src="${answer.thumbnail_url}" style="width: 25%; display: inline-block;" /></a>`)
+            $('#previewdiv').append(`<a href="${answer.url}"><div style="display: inline-block;"><h2>${answer.title}</h2></div></a>`)
+            $('#previewdiv').append(`<a href="${answer.url}"><div style="display: inline-block;">${answer.description}</div></a>`)
+            $('#urlurl').val(answer.url)
+            $('#urlimage').val(answer.thumbnail_url)
+            $('#urltitle').val(answer.title)
+            $('#urldescription').val(answer.description)
+          }
+        })
+      }
+}
+```
+
+#### 5. 2-Way Action Cable
+
+First, set individual users to listen to a channel relative to their individual id
+
+```
+class ConversationChannel < ApplicationCable::Channel
+  def subscribed
+    # stream_from "some_channel"
+    stream_from "conversation_channel#{current_user.id}"
+  end
+end
+in cable.js ...
+(function() {
+  this.App || (this.App = {});
+
+  App.cable = ActionCable.createConsumer();
+
+}).call(this);
+
+```
+
+After the broadcast, in the conversation.js i check if he is the sender or receiver and append the message to their respective chat boxes
+```
+received: function (data) {
+
+  var $msg = $(`<div style="display: block; position: relative; float: left; clear:both; background-color: white; border-radius:0.5em; padding:0.2em; margin:0.5em; box-shadow: 10px 10px 5px #888888; border: grey solid 0.05em;"><p>${data.message.content}</p></div>`)
+
+  var $msg2 = $(`<div style="display: block; position: relative; float: right; clear:both; background-color: rgb(17, 217, 61); border-radius:0.5em; padding:0.2em; margin:0.5em; box-shadow: 10px 10px 5px #888888; border: grey solid 0.05em;"><p>${data.message.content}</p></div>`)
+  console.log(data)
+  console.log(data.message)
+
+  if (data.sender === true) {
+    var $targetbox = $(`#message${data.message.sender_id}${data.message.receiver_id}`)
+    $targetbox.append($msg2)
+  } else {
+    var $targetbox = $(`#message${data.message.receiver_id}${data.message.sender_id}`)
+    $targetbox.append($msg)
+  }
+  var $targetContentBox = $(`.MessageMainContent`)
+  $targetContentBox.animate({ scrollTop: $targetContentBox.prop("scrollHeight")}, 1000)
+  // return alert(JSON.stringify(data))
+}
+```
+
+#### 6. Cloudinary & Industry pictures
+
+I used the server side uploading method, which requires me to create a customized devise user controller
+
+```
+def update
+  super
+  puts 'omgggggggggg'
+  puts params.inspect
+  @User = User.where(email: params["user"]["email"])[0]
+
+
+  if params[:user][:profilepic]
+    puts params[:user][:profilepic].inspect
+    uploaded_file = params[:user][:profilepic].path
+    cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
+    @User.profilepic = cloudnary_file['url']
+  end
+
+  if params[:user][:bannerpic]
+    uploaded_file2 = params[:user][:bannerpic].path
+    cloudnary_file2 = Cloudinary::Uploader.upload(uploaded_file2)
+    @User.bannerpic = cloudnary_file2['url']
+  end
+  @User.save
+end
 ```
 
 ### Additional things I will do
 
-* Implement more APIs for more informations e.g finance & weather
-* get socket to provide notification
-* improve on my CSS for profile
-* refactor my controller to have 1 model 1 controller
+* Add in Youtube APIs
+* Set state for the like button
+* make the messaging into one single component that displays usernames on the left and conversation on the right
+* Add in Notification for my messagings
+
 
 ### Credits
 
@@ -200,5 +248,8 @@ $grid.imagesLoaded().progress( function() {
 * YiSheng
 * Sharona
 * Jon
-* Cara
+* Maria
 * Ian
+* Raymond
+* Robin
+* Louisa
