@@ -9,35 +9,31 @@
 ***
 ### Development
 
-* react
-* Mongoose
-* connect-mongo
-* ejs & ejs-layouts
-* bcrypt
-* body-parser
-* dotevn
-* nodemon
-* passport & passport-local
-* express-session
-* method-overide
-* cloudinary
-* multer
-* masonry-layout
+* [ruby-on-rails](http://rubyonrails.org/)
+* [react](https://facebook.github.io/react/)
+* [react-rails](https://github.com/reactjs/react-rails)
+* [devise](https://github.com/plataformatec/devise)
+* [redis Heroku](https://devcenter.heroku.com/articles/redistogo)
+* [cloudinary](https://cloudinary.com/users/login)
+* [proc.link](http://www.proc.link/)
+* [actioncable](https://www.learnenough.com/action-cable-tutorial)
+* [500pix](https://500px.com/)
+* [jQuery-Autocomplete](https://jqueryui.com/autocomplete/)
+* [Bootstrap](http://getbootstrap.com/)
 
-* ejs, jQuery, Ajax
+* ruby, jQuery, Ajax
 
-A bit of Responsive Web Design to have everything fit onscreen regardless of browser size
-index.html / style.css / script.js
 
 ***
 ### Workings
 
 Step 1
-![ERD](https://github.com/DarkArtistry/project2/blob/master/ERD%20DiagramV1.1.png?raw=true)
-
-#### Note! : I learnt that should have done a Flow Diagram(2nd Step) at this point before proceeding to do the MVP
+![FlowChart](/app/assets/images/componentBreakDown.jpg)
 
 Step 2
+![ERD](https://github.com/DarkArtistry/WDI-Project-4-CircleUp/blob/master/CircleUpERD.png?raw=true)
+
+Step 3
 ![MVP](https://github.com/DarkArtistry/project2/blob/master/Untitled%20Diagram.png?raw=true)
 
 Step 3
