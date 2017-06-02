@@ -66,7 +66,7 @@ class Profiletop extends React.Component {
               {this.props.user.id !== this.props.userid && this.state.following &&
                 <span><a onClick={() => this.unfollow()}>Unfollow</a></span>}
               </li>
-              {this.props.user.id !== this.props.userid && <li><a href="/users/edit">Edit Profile</a></li>}
+              {this.props.user.id == this.props.userid && <li><a href="/users/edit">Edit Profile</a></li>}
 
             </ul>
           </nav>
