@@ -4,7 +4,7 @@
 
 [Expand Your Social Circle Now!](https://shielded-thicket-10055.herokuapp.com/)
 
-### Inspired LinkedIn & Success At School
+### Inspired LinkedIn & Success At School & Seeking Alpha
 
 ***
 ### Development
@@ -23,7 +23,8 @@
 
 * ruby, jQuery, Ajax
 
-
+![OMG](http://www.reactiongifs.com/wp-content/gallery/omg/omgwtf.gif)
+![OMG2](https://vignette1.wikia.nocookie.net/degrassi/images/c/c8/Jonah-hill-omg.gif/revision/latest?cb=20141210185802)
 ***
 ### Workings
 
