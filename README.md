@@ -22,7 +22,7 @@
 * [Bootstrap](http://getbootstrap.com/)
 
 * ruby, jQuery, Ajax
-
+### REACT AND RAILS ?!
 ![OMG](http://www.reactiongifs.com/wp-content/gallery/omg/omgwtf.gif)
 ![OMG2](https://vignette1.wikia.nocookie.net/degrassi/images/c/c8/Jonah-hill-omg.gif/revision/latest?cb=20141210185802)
 ***
