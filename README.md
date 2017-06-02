@@ -1,6 +1,7 @@
 # Circle Up
 
 ![CircleUp](https://s-media-cache-ak0.pinimg.com/originals/63/98/f6/6398f61cdd8d9ea570d48b7c68d33132.png)
+http://i.imgur.com/0pWZpne.jpg
 
 [Expand Your Social Circle Now!](https://shielded-thicket-10055.herokuapp.com/)
 
@@ -255,3 +256,6 @@ end
 * Raymond
 * Robin
 * Louisa
+
+* and my supportive friends :D
+![WDI9](http://i.imgur.com/0pWZpne.jpg)
